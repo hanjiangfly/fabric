@@ -97,7 +97,10 @@ function generateChannelArtifacts() {
 	echo
 }
 
+# 通过cryptogen工具生产org证书
 generateCerts
+# 使用docker-compose模版替换成私有的key file name常数
 replacePrivateKey
+# 生产orderer的起源块数据，构造交易通道，其他peer节点更新最新交易数据
 generateChannelArtifacts
 

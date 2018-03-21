@@ -57,6 +57,7 @@ function networkUp () {
     else
       #Generate all the artifacts that includes org certs, orderer genesis block,
       # channel configuration transaction
+      # 生成所有的文件包括组织证书，订单朔源区块，构造交易通道
       source generateArtifacts.sh $CH_NAME
     fi
 
@@ -76,12 +77,15 @@ function networkDown () {
     docker-compose -f $COMPOSE_FILE down
 
     #Cleanup the chaincode containers
+    # 清除链码的容器
     clearContainers
 
     #Cleanup images
+    # 清除镜像
     removeUnwantedImages
 
     # remove orderer block and other channel configuration transactions and certs
+    # 移除orderer块数据和其他构造交易的通道和证书
     rm -rf channel-artifacts/*.block channel-artifacts/*.tx crypto-config
 }
 
